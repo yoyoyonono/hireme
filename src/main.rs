@@ -12,10 +12,6 @@ fn forward(input: [u8; 32], confusion: [u8; 512], diffusion: [u32; 32]) -> [u8; 
                 input_clone[j] ^= ((output[k] as u32 * ((diffusion[j] >> k) & 1)) & 0xFF) as u8;
             }
         }
-
-        println!("{:?}", input_clone);
-        println!("{:?}", output);
-        println!();
     }
     for i in 0..16 {
         output[i] = confusion[input_clone[i * 2] as usize]
